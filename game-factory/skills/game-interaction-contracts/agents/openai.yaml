@@ -1,0 +1,4 @@
+interface:
+  display_name: "Game Interaction Contracts"
+  short_description: "Specify and validate game interactions"
+  default_prompt: "Use $game-interaction-contracts to define this game interaction as a traceable behavioral contract."

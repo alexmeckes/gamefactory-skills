@@ -1,0 +1,4 @@
+interface:
+  display_name: "Game Studio Orchestrator"
+  short_description: "Run a stage-gated Sol Ultra game studio"
+  default_prompt: "Use $game-studio-orchestrator to coordinate a Sol Ultra agent team for this game milestone."

@@ -1,0 +1,38 @@
+schema_version: 1
+kind: interaction_binding
+id: game.example-interaction.example-context
+version: 1
+status: draft
+
+contract_id: game.example-interaction
+contract_version: 1
+context: "Scene, prefab, character class, platform, or game mode."
+
+role_bindings:
+  initiator:
+    runtime_type: PlayerActor
+  target:
+    runtime_type: ExampleTarget
+
+hook_bindings:
+  spatial: {}
+  animation: {}
+  ui: {}
+  audio: {}
+  vfx: {}
+  camera: {}
+  input: {}
+
+tuning_overrides: {}
+
+related_assets: []
+related_blockouts: []
+code_paths: []
+test_paths: []
+
+validation:
+  representative_scene: ""
+  commands: []
+  evidence: []
+
+open_questions: []

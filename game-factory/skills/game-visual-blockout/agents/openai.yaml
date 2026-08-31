@@ -1,0 +1,4 @@
+interface:
+  display_name: "Game Visual Blockout"
+  short_description: "Prototype silhouettes and greyboxes for AI"
+  default_prompt: "Use $game-visual-blockout to create low-detail shape prototypes and production-ready AI handoff briefs."

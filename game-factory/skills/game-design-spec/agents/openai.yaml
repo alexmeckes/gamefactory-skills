@@ -1,0 +1,4 @@
+interface:
+  display_name: "Game Design Spec"
+  short_description: "Write clear, testable game design specifications"
+  default_prompt: "Use $game-design-spec to turn my game concept into an implementation-ready design specification."

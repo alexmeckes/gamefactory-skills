@@ -1,0 +1,62 @@
+schema_version: 1
+kind: interaction_flow
+id: game.example-flow
+version: 1
+status: draft
+maturity: concept
+
+intent: "The player journey or system sequence this flow coordinates."
+entry_conditions: []
+
+nodes:
+  - id: start
+    type: entry
+  - id: perform-example
+    type: interaction
+    interaction_id: game.example-interaction
+  - id: complete
+    type: exit
+    outcome: succeeded
+  - id: abandon
+    type: exit
+    outcome: abandoned
+
+edges:
+  - id: enter-example
+    from: start
+    to: perform-example
+    "on": entered
+    guards: []
+  - id: example-succeeded
+    from: perform-example
+    to: complete
+    "on": succeeded
+    guards: []
+  - id: example-cancelled
+    from: perform-example
+    to: abandon
+    "on": cancelled
+    guards: []
+
+resume_policy: "Resume at the current interaction node."
+abandon_policy: "Run node cleanup, then exit as abandoned."
+rollback_policy: "Atomic interactions own their rollback."
+
+acceptance:
+  - id: FLOW-001
+    covers: [edge.enter-example, edge.example-succeeded]
+    given: "entry conditions pass"
+    when: "the interaction reports succeeded"
+    then: "the flow exits with succeeded"
+  - id: FLOW-002
+    covers: [edge.example-cancelled]
+    given: "the interaction is active"
+    when: "the interaction reports cancelled"
+    then: "the flow exits with abandoned"
+
+dependencies:
+  interactions: [game.example-interaction]
+  flows: []
+  tests: []
+
+open_questions: []

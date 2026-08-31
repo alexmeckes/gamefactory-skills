@@ -1,0 +1,21 @@
+schema_version: 1
+kind: interaction_index
+
+interactions:
+  - id: game.example-interaction
+    version: 1
+    maturity: concept
+    owner: unassigned
+    path: contracts/game.example-interaction.interaction.yaml
+
+flows:
+  - id: game.example-flow
+    version: 1
+    maturity: concept
+    owner: unassigned
+    path: flows/game.example-flow.flow.yaml
+
+bindings:
+  - id: game.example-interaction.example-context
+    contract_id: game.example-interaction
+    path: bindings/game.example-interaction.example-context.binding.yaml

@@ -1,0 +1,26 @@
+{
+  "name": "game-factory",
+  "version": "0.1.0",
+  "description": "Stage-gated game design, interaction, visual-development, blockout, and AI handoff workflows.",
+  "author": {
+    "name": "Local developer"
+  },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Game Factory",
+    "shortDescription": "Design and prototype games with coordinated skills.",
+    "longDescription": "Game Factory coordinates game design specifications, interaction contracts, aesthetic exploration, production art style, visual blockouts, AI-ready asset handoffs, and multi-agent milestone evaluation.",
+    "developerName": "Local developer",
+    "category": "Productivity",
+    "capabilities": [
+      "Game Design",
+      "Visual Development",
+      "Multi-Agent Orchestration"
+    ],
+    "defaultPrompt": [
+      "Plan this game milestone with the studio orchestrator.",
+      "Turn this game concept into a testable design specification.",
+      "Explore a visual direction and prepare AI-ready asset handoffs."
+    ]
+  }
+}

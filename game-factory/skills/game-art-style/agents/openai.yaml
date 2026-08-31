@@ -1,0 +1,4 @@
+interface:
+  display_name: "Game Art Style"
+  short_description: "Translate an aesthetic into production art rules"
+  default_prompt: "Use $game-art-style to translate my selected game aesthetic into a production-ready art style."

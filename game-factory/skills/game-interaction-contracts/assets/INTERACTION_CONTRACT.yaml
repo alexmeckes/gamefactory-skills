@@ -1,0 +1,137 @@
+schema_version: 1
+kind: interaction
+id: game.example-interaction
+version: 1
+status: draft
+maturity: concept
+
+intent:
+  player_goal: "What the initiating player or agent is trying to accomplish."
+  design_purpose: "Why this interaction exists in the game."
+  supports_requirements: []
+
+participants:
+  initiator:
+    category: actor
+    capabilities: []
+    cardinality: one
+  target:
+    category: target
+    capabilities: []
+    cardinality: one
+
+trigger:
+  event: interact
+  input_action: interact
+  authority: local
+  spatial:
+    range_m: 1.0
+    facing_deg: 90
+    line_of_sight: true
+
+preconditions:
+  - id: eligible
+    rule: "initiator and target are eligible"
+    blocked_feedback: unavailable
+
+states:
+  - id: ready
+    initial: true
+    terminal: false
+  - id: performing
+    initial: false
+    terminal: false
+  - id: succeeded
+    initial: false
+    terminal: true
+  - id: cancelled
+    initial: false
+    terminal: true
+
+transitions:
+  - id: begin
+    from: ready
+    to: performing
+    event: trigger.accepted
+    guards: [eligible]
+    duration_ms: 0
+    interruptible: true
+    cancel_to: cancelled
+    effects: []
+  - id: complete
+    from: performing
+    to: succeeded
+    event: interaction.completed
+    guards: []
+    duration_ms: 0
+    interruptible: false
+    effects: []
+
+failure:
+  cases:
+    - id: target-invalidated
+      condition: "target becomes invalid"
+      destination: cancelled
+      rollback: "release reservations and restore uncommitted resources"
+      feedback: unavailable
+
+feedback:
+  ready: []
+  performing: []
+  succeeded: []
+  blocked: []
+  cancelled: []
+
+bindings_required:
+  spatial_hooks: []
+  animation_hooks: []
+  ui_hooks: []
+  audio_hooks: []
+  vfx_hooks: []
+  camera_hooks: []
+
+persistence:
+  save_policy: none
+  schema_version: 1
+  saved_fields: []
+  resume_policy: restart
+  load_conflicts:
+    participant_missing: cancel-and-clean-up
+    reserved_resource: release-and-recheck
+    contract_version_mismatch: require-migration
+  migration_policy: required-for-breaking-changes
+
+network:
+  authority: local
+  prediction: none
+  reconciliation: none
+
+accessibility:
+  redundant_feedback: []
+  input_options: []
+  timing_options: []
+
+telemetry:
+  events: []
+  privacy_classification: none
+
+acceptance:
+  - id: INT-001
+    covers: [transition.begin, transition.complete]
+    given: "all preconditions pass"
+    when: "the trigger is accepted"
+    then: "the interaction reaches succeeded exactly once"
+  - id: INT-002
+    covers: [transition.begin.cancel, failure.target-invalidated]
+    given: "the target becomes invalid while performing"
+    when: "the failure is detected"
+    then: "the interaction reaches cancelled and rolls back uncommitted effects"
+
+dependencies:
+  interactions: []
+  flows: []
+  related_blockouts: []
+  code_interfaces: []
+  tests: []
+
+open_questions: []

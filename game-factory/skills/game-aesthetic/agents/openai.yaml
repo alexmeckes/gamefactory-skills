@@ -1,0 +1,4 @@
+interface:
+  display_name: "Game Aesthetic"
+  short_description: "Explore and choose a coherent game aesthetic"
+  default_prompt: "Use $game-aesthetic to explore concept-art territories and select the visual mood for my game."
